@@ -65,7 +65,7 @@ pipeline {
             appimage.push('latest')
             }
           sh 'docker container rm netbooks --force'
-          sh 'docker run -dp 5000:80 --name netbooks sevgulnl/dotnet-angular-books'
+          sh 'docker run -dp 5100:80 --name netbooks sevgulnl/dotnet-angular-books'
         }
       }
     }

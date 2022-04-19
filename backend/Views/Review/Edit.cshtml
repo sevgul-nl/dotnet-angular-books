@@ -1,0 +1,52 @@
+@model Book
+@{
+    ViewBag.Title = ViewBag.Action + " Review";
+    var review = Model.Reviews[0];
+}
+<h2>@ViewBag.Title</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>Id</td>
+        <td>@Model.BookId</td>
+    </tr>
+    <tr>
+        <td>Title</td>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <td>Author</td>
+        <td>@Model.Author</td>
+    </tr>
+    <tr>
+        <td>Rating</td>
+        <td>@Model.Rating</td>
+    </tr>
+</table>
+<br />
+
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="@review.Author">Review Author</label>
+        <input asp-for="@review.Author" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="@review.Comment">Review</label>
+        <textarea asp-for="@review.Comment" class="form-control" text-wrap:normal" type="text"
+            placeholder="Please add your review here"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="@review.Rating">Rating</label>
+        <input asp-for="@review.Rating" class="form-control">
+    </div>
+
+    <input type="hidden" asp-for="@review.BookId" />
+    @if (@review.ReviewId > 0)
+    {
+        <input type="hidden" asp-for="@review.ReviewId" />
+    }
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <!--a asp-controller="Book" asp-action="Index" asp-route-id="BookId" class="btn btn-primary">Cancel</a-->
+    <a asp-controller="Review" asp-action="List" asp-route-id="@Model.BookId" class="btn btn-primary">Cancel</a>
+</form>

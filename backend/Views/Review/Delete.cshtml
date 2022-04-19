@@ -1,0 +1,28 @@
+@model Book
+@{
+    ViewBag.Title = ViewBag.Action + " Review";
+    var review = Model.Reviews[0];
+}
+<h2>@ViewBag.Title</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>Title</td>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <td>Author</td>
+        <td>@Model.Author</td>
+    </tr>
+    <tr>
+        <td>Rating</td>
+        <td>@Model.Rating</td>
+    </tr>
+</table>
+<br />
+<h2>Confirm Deletion</h2>
+<h3>Review @review.ReviewId by @review.Author</h3>
+<form asp-action="Delete" asp-route-id="BookId" method="post">
+    <input type="hidden" asp-for="@review.ReviewId" />
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Review" asp-action="List" asp-route-id="@Model.BookId" class="btn btn-primary">Cancel</a>
+</form>

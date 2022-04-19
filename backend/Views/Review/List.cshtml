@@ -1,0 +1,51 @@
+@model Book
+@{
+    ViewBag.Title = "Books";
+}
+<h2>List</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>Title</td>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <td>Author</td>
+        <td>@Model.Author</td>
+    </tr>
+    <tr>
+        <td>Rating</td>
+        <td>@Model.Rating</td>
+    </tr>
+</table>
+<br />
+<a asp-controller="Review" asp-action="Add" asp-route-id="@Model.BookId">Add Review</a>
+@if (Model.Reviews.Count() > 0)
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Author</th>
+                <th>Review</th>
+                <th>Rating</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model.Reviews)
+            {
+                <tr>
+                    <td>@review.ReviewId</td>
+                    <td>@review.Author</td>
+                    <td>@review.Comment</td>
+                    <td>@review.Rating</td>
+                    <td>
+                        <a asp-controller="Review" asp-action="Edit" asp-route-id="@review.ReviewId">Edit</a>
+                        <a asp-controller="Review" asp-action="Delete" asp-route-id="@review.ReviewId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

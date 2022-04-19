@@ -65,7 +65,7 @@ namespace backend.Controllers
                 else
                     context.Reviews.Update(review);
                 context.SaveChanges();
-                return Redirect("/List/" + review.BookId);
+                return Redirect("/netbooks/List/" + review.BookId);
             }
             else
             {
@@ -90,7 +90,7 @@ namespace backend.Controllers
             var bookId = review.BookId;
             context.Reviews.Remove(review);
             context.SaveChanges();
-            return Redirect("/List/" + bookId);
+            return Redirect("/netbooks/List/" + bookId);
         }
 
     }

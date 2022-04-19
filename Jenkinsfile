@@ -54,7 +54,7 @@ pipeline {
     stage('Publish') {
       environment {   registryCredential = 'dockerhub'  }
       steps {
-        sh 'dotnet publish backend/backend.csproj -r linux-arm -o out'
+        sh 'dotnet publish backend/backend.csproj --configuration Release -r linux-arm -o out'
         script {
             //sh 'docker stop $(docker ps -aqf "name=sevgulnl/snl-vue") && docker container prune -f -v $(docker ps -aqf "name=sevgulnl/snl-vue")'
             //sh 'docker image prune -f -v $(docker ps -aqf "name=sevgulnl/snl-vue")'

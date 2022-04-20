@@ -6,6 +6,6 @@ namespace backend.Models
         public long BookId { get; set; }
         public string Author { get; set; }
         public string Comment { get; set; }
-        public string Rating { get; set; }
+        public int Rating { get; set; }
     }
 }

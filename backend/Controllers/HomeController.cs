@@ -28,9 +28,11 @@ namespace backend.Controllers
             return View(books);
         }
 
-        public IActionResult Privacy()
+        
+        [Route("ng")]
+        public IActionResult Placeholder()
         {
-            return View();
+            return View(context.Books.First());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

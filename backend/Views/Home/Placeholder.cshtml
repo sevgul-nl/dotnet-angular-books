@@ -1,7 +1,11 @@
-@{
-    ViewData["Title"] = "Placeholder";
+@section scripts {
+<script src="runtime.js"></script>
+<script src="polyfills.js"></script>
+<script src="styles.js"></script>
+<script src="vendor.js"></script>
+<script src="main.js"></script>
 }
-<h2>eBook dotnet</h2>
-<span>ASP.NET Core MVC Content </span>
-<br />
-<span>Baki was here !..</span>
+<div id="data" class="p-1 bg-warning">
+    @Json.Serialize(Model)
+</div>
+<app-root></app-root>

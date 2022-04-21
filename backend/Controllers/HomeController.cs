@@ -30,9 +30,9 @@ namespace backend.Controllers
 
         
         [Route("ng")]
-        public IActionResult Placeholder()
+        public List<Book> Placeholder()
         {
-            return View(context.Books.First());
+            return context.Books.OrderBy(m => m.Title).ToList();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -34,12 +34,21 @@ pipeline {
       }
     }
     stage('Build') {
+      agent {
+        docker {
+          image 'node:16'
+        }
+      }
       steps {
         sh 'dotnet build backend/backend.csproj --configuration Release -r linux-arm'
+        sh 'cd ../frontend'
+        sh 'npm install'
+        sh 'npm run build'
       }
     }
     stage('Test: Unit Test') {
       steps {
+        sh 'cd ../backend'
         sh 'echo "implement Test: Unit Test.."'
       //sh "dotnet test UnitTest_eBoncuk.csproj"
       }

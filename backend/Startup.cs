@@ -29,6 +29,10 @@ namespace backend
             services.AddControllersWithViews();
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DataContext")));
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "../frontend/dist";
+            });
 
         }
 
